@@ -16,7 +16,7 @@
 <meta property="og:description" content="1.注解的概念 注解(Annotation)，也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。  2.注解的作用 编写文档:通过代码里标识的注解生成文档【生成文档doc文档】  代码分析:通过代码里标识的注解对代码进行分析【使用反射】 编译检查:通过代">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-10T06:12:38.000Z">
-<meta property="article:modified_time" content="2021-05-10T06:17:19.186Z">
+<meta property="article:modified_time" content="2021-05-10T06:23:48.331Z">
 <meta property="article:author" content="����">
 <meta property="article:tag" content="Annotation">
 <meta name="twitter:card" content="summary">
@@ -211,18 +211,19 @@
 </li>
 <li><p>   LOCAL_VARIABLE 局部变量</p>
 <h4 id="2-Retention-RetentionPolicy-描述保留阶段"><a href="#2-Retention-RetentionPolicy-描述保留阶段" class="headerlink" title="2. @Retention(RetentionPolicy) 描述保留阶段"></a>2. @Retention(RetentionPolicy) 描述保留阶段</h4></li>
-<li><p>   SOURCE  在编译器编译成class文件前就会被移除</p>
-</li>
-<li><pre><code>  CLASS   会保留到class字节码文件中，不会被jvm读取到
+<li><pre><code>SOURCE  在编译器编译成class文件前就会被移除
 </code></pre>
 </li>
-<li><pre><code>  RUNTIME 会保留到class字节码文件中，并被jvm读取到
+<li><pre><code>   CLASS   会保留到class字节码文件中，不会被jvm读取到
+</code></pre>
+</li>
+<li><pre><code>   RUNTIME 会保留到class字节码文件中，并被jvm读取到
 </code></pre>
 <h4 id="3-Documented-描述是否被抽取到api文档中"><a href="#3-Documented-描述是否被抽取到api文档中" class="headerlink" title="3. @Documented: 描述是否被抽取到api文档中"></a>3. @Documented: 描述是否被抽取到api文档中</h4></li>
 <li><pre><code>javadoc xx.java(生成文档)  
 </code></pre>
 </li>
-<li><pre><code>javac   xx.java(编译) 
+<li><pre><code>javacxx java(编译) 
 </code></pre>
 </li>
 <li><pre><code>javap   xx.java(反编译)
@@ -346,11 +347,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/05/10/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/15/io/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Hello World
+          io
         
       </div>
     </a>
@@ -472,6 +473,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Annotation</a>
               </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">reflect</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">io</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -521,7 +530,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">浑浊社会里的小清流 &lt;br&gt;  普通人家里的泥石流</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">年轻无为&lt;/br&gt;买时为生 &lt;br&gt;                   有道无术&lt;/br&gt; 自学成才</div>
   	  	
     	</section>
     
