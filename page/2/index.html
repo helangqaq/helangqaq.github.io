@@ -146,6 +146,133 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Container" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/20/Container/">Container</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/20/Container/" class="archive-article-date">
+  	<time datetime="2020-05-20T06:47:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="java容器-Container"><a href="#java容器-Container" class="headerlink" title="java容器(Container)"></a>java容器(Container)</h1><h2 id="1-什么是容器"><a href="#1-什么是容器" class="headerlink" title="1.什么是容器"></a>1.什么是容器</h2><p>容器是一个Java 所编写的程序，原先必须自行编写程序以管理对象关系，容器都会自动帮您做好。</p>
+<h2 id="2-java中三大容器"><a href="#2-java中三大容器" class="headerlink" title="2.java中三大容器"></a>2.java中三大容器</h2><p>Java中的容器类型包括：List、Set和Map<br>| map                                   | set                | list                 |      |<br>| ————————————- | —————— | ——————– | —- |<br>| 以键值对的方式存储 键相同时值会被覆盖 | 不能存放相同的元素 | 可以存放相同的元素   |      |<br>| 基于哈希表或者红黑树实现              | 基于Map实现        | 基于数组或者链表实现 |      |</p>
+<h2 id="3-java内置的容器类"><a href="#3-java内置的容器类" class="headerlink" title="3.java内置的容器类"></a>3.java内置的容器类</h2><p>Java内部的容器类主要分为两类：Collection(集合)与Map(映射)。</p>
+<h3 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h3><h4 id="emsp-set"><a href="#emsp-set" class="headerlink" title="&emsp;set"></a>&emsp;set</h4><h5 id="emsp-emsp-HashSet"><a href="#emsp-emsp-HashSet" class="headerlink" title="&emsp;&emsp;HashSet"></a>&emsp;&emsp;<em>HashSet</em></h5><ul>
+<li>&emsp;基于哈希表实现，底层使用HashMap来保存所有元素。</li>
+<li>&emsp;不能保证迭代顺序。</li>
+<li>&emsp;允许使用null元素。</li>
+</ul>
+<h5 id="emsp-emsp-LinkedHashSet"><a href="#emsp-emsp-LinkedHashSet" class="headerlink" title="&emsp;&emsp;LinkedHashSet"></a>&emsp;&emsp;<em>LinkedHashSet</em></h5><ul>
+<li>&emsp;LinkedHashSet底层使用LinkedHashMap来保存所有元素，它继承于HashSet。</li>
+<li>&emsp;内部使用双向链表维护插入顺序。<h5 id="emsp-emsp-TreeSet"><a href="#emsp-emsp-TreeSet" class="headerlink" title="&emsp;&emsp;TreeSet"></a>&emsp;&emsp;<em>TreeSet</em></h5></li>
+<li>&emsp;基于（TreeMap）红黑树实现 TreeSet非同步，线程不安全。</li>
+<li>&emsp;TreeSet中的元素支持2种排序方式：自然排序 或者 根据创建TreeSet 时提供的 Comparator 进行排序。</li>
+</ul>
+<h4 id="emsp-List"><a href="#emsp-List" class="headerlink" title="&emsp;List"></a>&emsp;List</h4><h5 id="emsp-emsp-ArrayList"><a href="#emsp-emsp-ArrayList" class="headerlink" title="&emsp;&emsp;ArrayList"></a>&emsp;&emsp;<em>ArrayList</em></h5><ul>
+<li>&emsp;实现 List 接口、底层使用数组保存所有元素。 </li>
+<li>&emsp;相当于动态数组，支持动态扩容。     </li>
+<li>&emsp;不同步。</li>
+</ul>
+<h5 id="emsp-emsp-Vector"><a href="#emsp-emsp-Vector" class="headerlink" title="&emsp;&emsp; Vector"></a>&emsp;&emsp; <em>Vector</em></h5><ul>
+<li><p>&emsp;Vector可以实现可增长的对象数组。</p>
+</li>
+<li><p>&emsp;Vector 实现 List 接口，继承 AbstractList 类，同时还实现        RandmoAccess 接口，Cloneable 接口。</p>
+</li>
+<li><p>&emsp;Vector 是线程安全的 LinkedList LinkedList。</p>
+<h5 id="emsp-emsp-LinkedList"><a href="#emsp-emsp-LinkedList" class="headerlink" title="&emsp;&emsp;LinkedList"></a>&emsp;&emsp;<em>LinkedList</em></h5></li>
+<li><p>&emsp;是基于链表实现的。</p>
+</li>
+<li><p> &emsp;所以它的插入和删除操作比 ArrayList更加高效。但也是由于其为基于链表的，所以随机访问的效率要比 ArrayList 差。</p>
+<h4 id="emsp-Queue"><a href="#emsp-Queue" class="headerlink" title="&emsp;Queue"></a>&emsp;Queue</h4></li>
+</ul>
+<h5 id="emsp-emsp-LinkedList-1"><a href="#emsp-emsp-LinkedList-1" class="headerlink" title="&emsp;&emsp;LinkedList"></a>&emsp;&emsp;<em>LinkedList</em></h5><ul>
+<li>&emsp;可以用于实现双向队列。</li>
+</ul>
+<h3 id="Map-用于映射（键值对）问题处理"><a href="#Map-用于映射（键值对）问题处理" class="headerlink" title="Map(用于映射（键值对）问题处理)"></a>Map(用于映射（键值对）问题处理)</h3><h4 id="emsp-HashMap"><a href="#emsp-HashMap" class="headerlink" title="&emsp;HashMap"></a>&emsp;HashMap</h4><ul>
+<li>HashMap根据键的HashCode来实现，访问速度较快，遍历顺序并不确定。</li>
+<li>HashMap最多只允许一条记录的键为null，允许多条记录的值为null。</li>
+<li>HashMap线程不安全。</li>
+<li>确保线程安全,可以用Collections的synchronizedMap方法使HashMap具有线程安全的能力，或者使用ConcurrentHashMap。</li>
+<li><h4 id="HashTable"><a href="#HashTable" class="headerlink" title="HashTable"></a>HashTable</h4></li>
+<li> HashTable是遗留类，多数功能与HashMap类似，继承自Dictionary类。</li>
+<li>HashTable是线程安全的。也就是说任意时刻只有一个线程能够写HashTable。</li>
+<li>HashTable的并发性不如ConcurrentHashMap，因为ConcurrentHashMap引入了分段锁。</li>
+</ul>
+<h4 id="emsp-LinkedHashMap"><a href="#emsp-LinkedHashMap" class="headerlink" title="&emsp; LinkedHashMap"></a>&emsp; LinkedHashMap</h4><ul>
+<li>基于哈希表和链表实现，借助双向链表确保迭代顺序是插入的顺序。</li>
+</ul>
+<h4 id="emsp-TreeMap"><a href="#emsp-TreeMap" class="headerlink" title="&emsp;TreeMap"></a>&emsp;TreeMap</h4><ul>
+<li>基于红黑树实现 。</li>
+<li>默认按照键值得升序进行排序。</li>
+<li>在使用TreeMap时，key必须实现Comparable接口或者在构造TreeMap传入自定义的Comparator，<pre><code>否则会在运行时抛出java.lang.ClassCastException类型的异常。
+</code></pre>
+<h2 id="4-容器体系图"><a href="#4-容器体系图" class="headerlink" title="4.容器体系图"></a>4.容器体系图</h2><img src="https://img-blog.csdnimg.cn/20210101112240982.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMTExNzY0,size_16,color_FFFFFF,t_70"></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Container</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/20/Container/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-io" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -521,83 +648,6 @@
 
 
   
-    <article id="post-Eclipse安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/01/Eclipse%E5%AE%89%E8%A3%85/">Eclipse安装</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/01/Eclipse%E5%AE%89%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2020-05-01T07:01:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-下载"><a href="#1-下载" class="headerlink" title="1. 下载"></a>1. 下载</h2><p>1.Eclipse官网链接   <a target="_blank" rel="noopener" href="https://www.eclipse.org/">Eclipse官网</a>.<br>2.一直点download 就可以了<br><img src="https://img-blog.csdnimg.cn/20210121130006994.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMTExNzY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210121130132766.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMTExNzY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210121130158491.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMTExNzY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>最后显示的是选择性捐赠 不是要收费</p>
-<p><img src="https://img-blog.csdnimg.cn/20210121130638830.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMTExNzY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h2 id="2-安装"><a href="#2-安装" class="headerlink" title="2. 安装"></a>2. 安装</h2><p>1.先将下载好的Eclipse解压<br><img src="https://img-blog.csdnimg.cn/20210121130825638.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMTExNzY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20210121123150926.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMTExNzY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>2.在解压好的文件夹中找到Eclipse.exe运行起来<br><img src="https://img-blog.csdnimg.cn/20210121131206559.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMTExNzY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>3.设置你在Eclipse编写项目的存储空间<br><img src="https://img-blog.csdnimg.cn/20210121131616283.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMTExNzY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20210121132351899.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMTExNzY0,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Eclipse</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/01/Eclipse%E5%AE%89%E8%A3%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -695,11 +745,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Annotation</a>
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
+                <a href="javascript:void(0)" class="js-tag color1">Annotation</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -708,6 +758,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">reflect</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
               </li>
              
               <li class="article-tag-list-item">
