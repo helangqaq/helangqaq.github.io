@@ -6,22 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://helangqaq.github.io">
-  <title>spring基础 | Growth Diary</title>
+  <title>mybatis基础 | Growth Diary</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Spring[TOC] 1.Spring Spring是一个开源框架，为简化企业级应用开发而生，Spring可以是简单的javabean实现以前只有EJB才能实现的功能  2.Spring框架图 3.核心技术1.控制反转 控制反转(IoC：Inversion of Control )   传统的开发模式中，当需要一个对象时，我们会直接使用new或者getinstance等直接或间接调用构造方法创建">
+  <meta name="description" content="[TOC] Mybatis 环境搭建  IDEA版第一步 创建maven工程并导入坐标 第二步 创建实体类和dao接口 第三步 创建mybatis主配置文件 SqlMapConfig.xml 123456789101112131415161718192021222324252627282930313233&lt;?xml version &#x3D;&quot;1.0&quot;    encoding &#x3D;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring基础">
-<meta property="og:url" content="https://helangqaq.github.io/2021/05/13/spring%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:title" content="mybatis基础">
+<meta property="og:url" content="https://helangqaq.github.io/2020/07/19/mybatis%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Growth Diary">
-<meta property="og:description" content="Spring[TOC] 1.Spring Spring是一个开源框架，为简化企业级应用开发而生，Spring可以是简单的javabean实现以前只有EJB才能实现的功能  2.Spring框架图 3.核心技术1.控制反转 控制反转(IoC：Inversion of Control )   传统的开发模式中，当需要一个对象时，我们会直接使用new或者getinstance等直接或间接调用构造方法创建">
+<meta property="og:description" content="[TOC] Mybatis 环境搭建  IDEA版第一步 创建maven工程并导入坐标 第二步 创建实体类和dao接口 第三步 创建mybatis主配置文件 SqlMapConfig.xml 123456789101112131415161718192021222324252627282930313233&lt;?xml version &#x3D;&quot;1.0&quot;    encoding &#x3D;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://qqadapt.qpic.cn/txdocpic/0/5d57b59e844232dafe67e1f0aec8740c/0">
-<meta property="article:published_time" content="2021-05-13T10:19:32.000Z">
-<meta property="article:modified_time" content="2021-05-13T12:17:27.179Z">
-<meta property="article:author" content="����">
-<meta property="article:tag" content="spring">
+<meta property="og:image" content="https://qqadapt.qpic.cn/txdocpic/0/e042219179e532a63f37040cd30948e2/0?w=357&h=645">
+<meta property="og:image" content="https://qqadapt.qpic.cn/txdocpic/0/5aaacd3a75acc55ed331255e5e5dda0b/0?w=1862&h=520">
+<meta property="og:image" content="https://qqadapt.qpic.cn/txdocpic/0/743e1d1afafdb007cd53b3f4d3a36cb2/0?w=1870&h=1554">
+<meta property="og:image" content="https://qqadapt.qpic.cn/txdocpic/0/d3bc21e6d5158297212c765ccae5b0af/0?w=4096&h=2956">
+<meta property="og:image" content="https://qqadapt.qpic.cn/txdocpic/0/35a3a0573585749d780e1c1759f8f3e1/0?w=1251&h=697">
+<meta property="og:image" content="https://qqadapt.qpic.cn/txdocpic/0/1ed5774f87b6890e659d22da408145b6/0?w=1262&h=521">
+<meta property="article:published_time" content="2020-07-19T12:33:57.000Z">
+<meta property="article:modified_time" content="2021-05-13T13:31:46.296Z">
+<meta property="article:author" content="何朗">
+<meta property="article:tag" content="mybatis">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://qqadapt.qpic.cn/txdocpic/0/5d57b59e844232dafe67e1f0aec8740c/0">
+<meta name="twitter:image" content="https://qqadapt.qpic.cn/txdocpic/0/e042219179e532a63f37040cd30948e2/0?w=357&h=645">
   
     <link rel="alternative" href="/atom.xml" title="Growth Diary" type="application/atom+xml">
   
@@ -82,12 +87,6 @@
 				
 					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 			</div>
 		</nav>
 	</header>		
@@ -123,12 +122,6 @@
 					
 						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
 				</div>
 			</nav>
 
@@ -151,195 +144,156 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-spring基础" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-mybatis基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      spring基础
+      mybatis基础
     </h1>
   
 
         
-        <a href="/2021/05/13/spring%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2021-05-13T10:19:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-13</time>
+        <a href="/2020/07/19/mybatis%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2020-07-19T12:33:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-19</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Spring"><a href="#Spring" class="headerlink" title="Spring"></a><strong>Spring</strong></h1><p>[TOC]</p>
-<h2 id="1-Spring"><a href="#1-Spring" class="headerlink" title="1.Spring"></a><strong>1.Spring</strong></h2><ul>
-<li>Spring是一个开源框架，为简化企业级应用开发而生，Spring可以是简单的javabean实现以前只有EJB才能实现的功能</li>
-</ul>
-<h2 id="2-Spring框架图"><a href="#2-Spring框架图" class="headerlink" title="2.Spring框架图"></a><strong>2.Spring框架图</strong></h2><p><img src="https://qqadapt.qpic.cn/txdocpic/0/5d57b59e844232dafe67e1f0aec8740c/0" alt="img"></p>
-<h2 id="3-核心技术"><a href="#3-核心技术" class="headerlink" title="3.核心技术"></a><strong>3.核心技术</strong></h2><h3 id="1-控制反转"><a href="#1-控制反转" class="headerlink" title="1.控制反转"></a><strong>1.控制反转</strong></h3><ul>
-<li><p>控制反转(IoC：Inversion of Control )</p>
-<p>  传统的开发模式中，当需要一个对象时，我们会直接使用new或者getinstance等直接或间接调用构造方法创建一个对象，而在spring开发模式中，spring容器使用了工厂模式为我们创建了所需要的对象，不需要我们自己创建了，直接调用spring提供的对象就可以了，这就是控制反转的思想， spring通过工厂帮我们创建对象  控制对象转给spring<br>  spring使用javabean对象的set方法或者带参构造方法为我们在创建所需对象时 将其属性自动设置所需要的值  的过程，这就是依赖注入思想</p>
-</li>
-</ul>
-<h4 id="1-基于xml的Ioc的使用方法"><a href="#1-基于xml的Ioc的使用方法" class="headerlink" title="1.基于xml的Ioc的使用方法"></a><strong>1.基于xml的Ioc的使用方法</strong></h4><ol>
-<li>导入spring的相关环境</li>
-<li>创建并配置bean.xml </li>
-<li>创建ApplicationContext容器对象 </li>
-<li>ApplicationContext applicationContext = <strong>new</strong>      ClassPathXmlApplicationContext(<strong>“bean.xml”</strong>);</li>
-<li>通过get.bean(“bean的id名”) 来获取对象</li>
+        <p>[TOC]</p>
+<h1 id="Mybatis"><a href="#Mybatis" class="headerlink" title="Mybatis"></a>Mybatis</h1><ol>
+<li><h1 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h1></li>
 </ol>
-<h4 id="2-基于注解的Ioc的使用方法"><a href="#2-基于注解的Ioc的使用方法" class="headerlink" title="2.基于注解的Ioc的使用方法"></a><strong>2.基于注解的Ioc的使用方法</strong></h4><p>   1.Component 放在类上 将该类注入到spring  交个spring来管理</p>
-<p>   2.Controller 用于分层  作用和Component 一样  一般放在表示层</p>
-<ol start="3">
-<li>Service     用于分层  作用和Component 一样  一般放在业务层</li>
+<h2 id="IDEA版"><a href="#IDEA版" class="headerlink" title="IDEA版"></a>IDEA版</h2><p>第一步 创建maven工程并导入坐标</p>
+<p>第二步 创建实体类和dao接口</p>
+<p>第三步 创建mybatis主配置文件 SqlMapConfig.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?xml version =&quot;1.0&quot;    encoding =&quot;UTF-8&quot; ?&gt;</span>    </span><br><span class="line">   <span class="meta">&lt;!DOCTYPE <span class="meta-keyword">configuration</span> <span class="meta-keyword">PUBLIC</span><span class="meta-string">&quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span>   </span></span><br><span class="line"><span class="meta">           <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;</span>&gt;</span>   </span><br><span class="line">    <span class="comment">&lt;!--mybatis的主配置文件--&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>   &gt;</span></span><br><span class="line">      <span class="comment">&lt;!--配置环境--&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">environments</span>   <span class="attr">default</span> =<span class="string">&quot;mysql&quot;</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--配置mysql的环境--&gt;</span>    </span><br><span class="line">        <span class="tag">&lt;<span class="name">environment</span>    <span class="attr">id</span> =<span class="string">&quot;mysql&quot;</span>   &gt;</span></span><br><span class="line">                <span class="comment">&lt;!--配置事务的类型--&gt;</span>    </span><br><span class="line">            <span class="tag">&lt;<span class="name">transactionManager</span>  <span class="attr">type</span> =<span class="string">&quot;JDBC&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">transactionManager</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--配置数据源 (连接池)--&gt;</span>    </span><br><span class="line">            <span class="tag">&lt;<span class="name">dataSource</span>  <span class="attr">type</span> =<span class="string">&quot;POOLED&quot;</span> &gt;</span></span><br><span class="line">                    <span class="comment">&lt;!--配置连接数据库的4个基本信息--&gt;</span>    </span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span>  <span class="attr">name</span> =<span class="string">&quot;driver&quot;</span>    <span class="attr">value</span> =<span class="string">&quot;com.mysql.jdbc.Driver&quot;</span>   /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span>  <span class="attr">name</span> =<span class="string">&quot;url&quot;</span>    <span class="attr">value</span>=<span class="string">&quot;jdbc:mysql://localhost:3306/student?allowMultiQueries=true&quot;</span>   /&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span>  <span class="attr">name</span> =<span class="string">&quot;username&quot;</span>  <span class="attr">value</span> =<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">property</span>  <span class="attr">name</span> =<span class="string">&quot;password&quot;</span>  <span class="attr">value</span> =<span class="string">&quot;&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">dataSource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">environment</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">environments</span>&gt;</span></span><br><span class="line"></span><br><span class="line">       <span class="comment">&lt;!--指定映射配置文件的位置,映射配置文件指的是每个dao独立的配置文件    </span></span><br><span class="line"><span class="comment">         如果使用注解的方式的话 应把resource改为class属性    </span></span><br><span class="line"><span class="comment">        --&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--使用xml方式--&gt;</span>    </span><br><span class="line">            <span class="tag">&lt;<span class="name">mapper</span>   <span class="attr">resource</span> =<span class="string">&quot;com/mybatis/dao/StudentDao.xml&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--使用注解方式    使用注解的方式 dao.xml里面就不能存在注解方法的id名--&gt;</span>    </span><br><span class="line">            <span class="comment">&lt;!--&lt;mapper class=&quot;com.mybatis.dao.StudentDao&quot;&gt;&lt;/mapper&gt;--&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+
+
+<p>第四步 创建映射配置文件</p>
+<p>​    StudentDao. xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">&lt;?xml version =&quot;1.0&quot;   encoding =&quot;UTF-8&quot; ?&gt;</span>    </span><br><span class="line">   <span class="meta">&lt;!DOCTYPE     <span class="meta-keyword">mapper</span>  <span class="meta-keyword">PUBLIC</span><span class="meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span>   </span></span><br><span class="line"><span class="meta">          <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span> &gt;</span>   </span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span>     <span class="attr">namespace</span> =<span class="string">&quot;com.mybatis.dao.StudentDao&quot;</span>   &gt;</span></span><br><span class="line">        <span class="comment">&lt;!--配置查询所有   id必须是dao里面的方法名--&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span>     <span class="attr">id</span> =<span class="string">&quot;findStudentAll&quot;</span>    <span class="attr">resultType</span> =<span class="string">&quot;com.mybatis.entity.Student&quot;</span>   &gt;</span></span><br><span class="line">         select  *  from stu</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p> 1.mybatis映射配置文件位置必须和dao(mapper)接口的包结构相同</p>
+<p> 2.映射配置文件的mapper标签的namespace属性取值必须是dao接口的全限定类名(全路径)</p>
+<p> 3.映射配置文件的操作设置(select,update..),id属性必须是dao/mapper接口的方法名</p>
+<p>遵循上面几点就不需要写dao层的实现类</p>
+<h2 id="eclipse版"><a href="#eclipse版" class="headerlink" title="eclipse版"></a>eclipse版</h2><p>第一步：导入相关jar包</p>
+<p>第二步：创建相关配置文件</p>
+<p>​              mybatis-config.xml</p>
+<p>mysqldb.properties /oracledb.propertise</p>
+<p>log4j.properties等等</p>
+<p>第三步：编写 pojo mapper mybatisUtils等</p>
+<p>​                 <img src="https://qqadapt.qpic.cn/txdocpic/0/e042219179e532a63f37040cd30948e2/0?w=357&h=645" alt="img">        </p>
+<ol>
+<li><h1 id="使用main方法实现入门"><a href="#使用main方法实现入门" class="headerlink" title="使用main方法实现入门"></a>使用main方法实现入门</h1></li>
+<li><h2 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h2></li>
 </ol>
-<h3 id="2-面向切面编程"><a href="#2-面向切面编程" class="headerlink" title="2.面向切面编程"></a><strong>2.面向切面编程</strong></h3><p>面向切面编程(AOP：Aspect Oriented Programming)     在面向对象编程（oop)思想中，我们将事物纵向抽成一个个的对象。而在面向切面编程中，我们将一个个的对象某些类似的方面横向抽成一个切面，对这个切面进行一些如权限控制，事物管理，记录日志等公用操作处理的过程就是面向切面编程的思想。</p>
-<h3 id="3-依赖注入"><a href="#3-依赖注入" class="headerlink" title="3.依赖注入"></a><strong>3.依赖注入</strong></h3><h4 id="1-xml的构造方法注入"><a href="#1-xml的构造方法注入" class="headerlink" title="1.xml的构造方法注入"></a><strong>1.xml的构造方法注入</strong></h4><p><em>构造函数注入：</em></p>
-<p>​    <em>使用的标签:constructor-arg</em></p>
-<p>​    <em>标签出现的位置：bean标签的内部</em></p>
-<p>​    <em>标签中的属性</em></p>
-<p>​        <em>type：用于指定要注入的数据的数据类型，该数据类型也是构造函数中某个或某些参数的类型</em></p>
-<p>​        <em>index：用于指定要注入的数据给构造函数中指定索引位置的参数赋值。索引的位置是从0开始</em></p>
-<p>​        <em>name：用于指定给构造函数中指定名称的参数赋值                                        常用的</em></p>
-<p>​        <em>=============以上三个用于指定给构造函数中哪个参数赋值===============================</em></p>
-<p>​        <em>value：用于提供基本类型和String类型的数据</em></p>
-<p>​        <em>ref：用于指定其他的bean类型数据。它指的就是在spring的Ioc核心容器中出现过的bean对象</em></p>
-<p>​    <em>优势：</em></p>
-<p>​        <em>在获取bean对象时，注入数据是必须的操作，否则对象无法创建成功。</em></p>
-<p>​    <em>弊端：</em></p>
-<p>​        <em>改变了bean对象的实例化方式，使我们在创建对象时，如果用不到这些数据，也必须提供。</em></p>
-<h4 id="2-xml的set方法注入"><a href="#2-xml的set方法注入" class="headerlink" title="2.xml的set方法注入"></a><strong>2.xml的set方法注入</strong></h4><p>set方法注入             </p>
-<p>​    <em>涉及的标签：property</em></p>
-<p>​    <em>出现的位置：bean标签的内部</em></p>
-<p>​    <em>标签的属性</em></p>
-<p>​        <em>name：用于指定注入时所调用的set方法名称</em></p>
-<p>​        <em>value：用于提供基本类型和String类型的数据</em></p>
-<p>​        <em>ref：用于指定其他的bean类型数据。它指的就是在spring的Ioc核心容器中出现过的bean对象</em></p>
-<p>​    <em>优势：</em></p>
-<p>​        <em>创建对象时没有明确的限制，可以直接使用默认构造函数</em></p>
-<p>​    <em>弊端：</em></p>
-<p>​        <em>如果有某个成员必须有值，则获取对象是有可能set方法没有执行。</em></p>
-<p>set注入集合的使用方法</p>
-<p><em>&lt;!– 复杂类型的注入/集合类型的注入</em></p>
-<p>​    <em>用于给List结构集合注入的标签：</em></p>
-<p>​        <em>list array set</em></p>
-<p>​    <em>用于个Map结构集合注入的标签:</em></p>
-<p>​        <em>map  props</em></p>
-<p>​    <em>结构相同，标签可以互换–&gt;</em></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;accountService3&quot; class=&quot;com.learning.service.impl.AccountServiceImpl3&quot;&gt;</span><br><span class="line">   &lt;property name=&quot;list&quot;&gt;</span><br><span class="line">       &lt;array&gt;</span><br><span class="line">           &lt;value&gt;一拳&lt;/value&gt;</span><br><span class="line">           &lt;value&gt;YY&lt;/value&gt;</span><br><span class="line">           &lt;value&gt;超人&lt;/value&gt;</span><br><span class="line">       &lt;/array&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;map&quot;&gt;</span><br><span class="line">       &lt;map&gt;</span><br><span class="line">           &lt;entry key=&quot;name&quot;&gt;</span><br><span class="line">               &lt;value&gt;一拳嘤嘤超人&lt;/value&gt;</span><br><span class="line">            &lt;/entry&gt;</span><br><span class="line">           &lt;entry key=&quot;age&quot;value=&quot;23&quot;/&gt;</span><br><span class="line">       &lt;/map&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;set&quot;&gt;</span><br><span class="line">       &lt;set&gt;</span><br><span class="line">           &lt;value&gt;11&lt;/value&gt;</span><br><span class="line">           &lt;value&gt;22&lt;/value&gt;</span><br><span class="line">           &lt;value&gt;33&lt;/value&gt;</span><br><span class="line">       &lt;/set&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">    &lt;property name=&quot;properties&quot;&gt;</span><br><span class="line">        &lt;props&gt;</span><br><span class="line">            &lt;prop key=&quot;name&quot; &gt; 一拳嘤嘤超人&lt;/prop&gt;</span><br><span class="line">            &lt;prop key=&quot;age&quot; &gt; 23&lt;/prop&gt;</span><br><span class="line">       &lt;/props&gt;</span><br><span class="line">    &lt;/property&gt;</span><br><span class="line">&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="1-读取配置文件"><a href="#1-读取配置文件" class="headerlink" title="1.读取配置文件"></a>1.读取配置文件</h3><h3 id="2-创建SqlSessionFactory工厂-构建者模式"><a href="#2-创建SqlSessionFactory工厂-构建者模式" class="headerlink" title="2.创建SqlSessionFactory工厂   构建者模式"></a>2.创建SqlSessionFactory工厂   构建者模式</h3><h3 id="3-使用工厂生产SqlSession对象-工厂模式"><a href="#3-使用工厂生产SqlSession对象-工厂模式" class="headerlink" title="3.使用工厂生产SqlSession对象   工厂模式"></a>3.使用工厂生产SqlSession对象   工厂模式</h3><h3 id="4-使用SqlSession创建Dao接口的代理对象-动态代理模式"><a href="#4-使用SqlSession创建Dao接口的代理对象-动态代理模式" class="headerlink" title="4.使用SqlSession创建Dao接口的代理对象 动态代理模式"></a>4.使用SqlSession创建Dao接口的代理对象 动态代理模式</h3><h3 id="5-使用代理对象执行方法"><a href="#5-使用代理对象执行方法" class="headerlink" title="5.使用代理对象执行方法"></a>5.使用代理对象执行方法</h3><h3 id="6-释放资源"><a href="#6-释放资源" class="headerlink" title="6.释放资源"></a>6.释放资源</h3><p>​                 <img src="https://qqadapt.qpic.cn/txdocpic/0/5aaacd3a75acc55ed331255e5e5dda0b/0?w=1862&h=520" alt="img">        </p>
+<h1 id="入门执行流程解析图"><a href="#入门执行流程解析图" class="headerlink" title="入门执行流程解析图"></a>入门执行流程解析图</h1><h1 id="构建者模式"><a href="#构建者模式" class="headerlink" title="           构建者模式"></a><img src="https://qqadapt.qpic.cn/txdocpic/0/743e1d1afafdb007cd53b3f4d3a36cb2/0?w=1870&h=1554" alt="img">           构建者模式</h1><h2 id="1-什么是构建者模式"><a href="#1-什么是构建者模式" class="headerlink" title="1.什么是构建者模式"></a>1.什么是构建者模式</h2><p>​        将构建的过程和表示的过程进行分离；</p>
+<h2 id="2-使用场景"><a href="#2-使用场景" class="headerlink" title="2. 使用场景"></a>2. 使用场景</h2><p>​        创建一个复杂的对象，同时该复杂对象有很多的默认值（初始化）的时候，可以使用构建者模式（给对象设置可选参数）</p>
+<h2 id="3-分析构建者里面的角色："><a href="#3-分析构建者里面的角色：" class="headerlink" title="3.分析构建者里面的角色："></a>3.分析构建者里面的角色：</h2><p>​          角色一：产品ChargesParams也就是对象的属性；</p>
+<p>​          角色二：抽象构建者（抽出相同的方法）；（可以忽略）</p>
+<p>​          角色三：具体的构建者Builder</p>
+<p>​          角色四：组装（即调用的方法）</p>
+<p>​          Ps： 角色一和角色三是必须有的，其他可以忽略；</p>
+<h1 id="mybatis执行流程"><a href="#mybatis执行流程" class="headerlink" title="mybatis执行流程                                             "></a>mybatis执行流程                    <img src="https://qqadapt.qpic.cn/txdocpic/0/d3bc21e6d5158297212c765ccae5b0af/0?w=4096&h=2956" alt="img">                         <img src="https://qqadapt.qpic.cn/txdocpic/0/35a3a0573585749d780e1c1759f8f3e1/0?w=1251&h=697" alt="img"></h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">先进defaultsqlsession  在进CachingExecute 在进basestatementHandler  再进simpleStatement    在进routingStatementHandler  再进 PreparedStatementHandler   再进resultSethandler 再进他的实现类 也就是DefaultResultHandler (进行结果集封装)   </span><br></pre></td></tr></table></figure>
 
 
 
-<h4 id="3-注解注入"><a href="#3-注解注入" class="headerlink" title="3.注解注入"></a><strong>3.注解注入</strong></h4><p>@Component:     </p>
-<p>  作用：用于把当前类对象存入spring容器中</p>
-<p>  value：用于指定bean的id。当我们不写时，它的默认值是当前类名，且首字母改小写。</p>
-<p>@ Controller：一般用在表现层   作用和@Component一样</p>
-<p>@Service：一般用在业务层   作用和@Component一样</p>
-<p>@Repository：一般用在持久层   作用和@Component一样</p>
-<h2 id="4-spring的优势"><a href="#4-spring的优势" class="headerlink" title="4.spring的优势"></a><strong>4.spring的优势</strong></h2><p>​    1.方便解耦，简化开发</p>
-<p>​    2.aop编程的支持</p>
-<p>​    3.声明式事务的支持</p>
-<p>​    4.方便程序的测试</p>
-<p>​    5.方便集成各种优秀的框架</p>
-<p>​    6.降低了JavaEE Api的使用难度</p>
-<p>​    7.Java源码的经典学习范例   </p>
-<h2 id="5-什么是EJB"><a href="#5-什么是EJB" class="headerlink" title="5.什么是EJB"></a><strong>5.什么是EJB</strong></h2><p>EJB是sun的JavaEE服务器端组件模型，设计目标与核心应用是部署分布式应用程序。简单来说就是把已经编写好的程序（即：类）打包放在服务器上执行</p>
-<h2 id="6-项目的耦合和解耦"><a href="#6-项目的耦合和解耦" class="headerlink" title="6.项目的耦合和解耦"></a><strong>6.项目的耦合和解耦</strong></h2><p>传统项目的耦合：   </p>
-<p>在传统的三层架构中  表示层掉业务层  业务层掉dao层  创建相关层的对象导致耦合程度   加深，</p>
-<p>spring Ioc解耦 </p>
-<p> spring的ioc 将各个层所创建对象统计集中交给ioc容器管理，各个层通过ioc拿到想对应的对象，从而降低项目的耦合</p>
-<h2 id="7-Spring中的Bean"><a href="#7-Spring中的Bean" class="headerlink" title="7.Spring中的Bean"></a><strong>7.Spring中的Bean</strong></h2><h3 id="1-基于xml创建bean的方法"><a href="#1-基于xml创建bean的方法" class="headerlink" title="1.基于xml创建bean的方法"></a><strong>1.基于xml创建bean的方法</strong></h3><p>第一种方式：使用默认构造函数创建。</p>
-<p>​        <em>在spring的配置文件中使用bean标签，配以id和class属性之后，且没有其他属性和标签时。</em></p>
-<p>​        <em>采用的就是默认构造函数创建bean对象，此时如果类中没有默认构造函数，则对象无法创建。</em></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean name=<span class="string">&quot;accountMapper&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;com.learning.mapper.impl.AccountMapperImpl&quot;</span>&gt;&lt;/bean&gt;&lt;bean name=<span class="string">&quot;accountService&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;com.learning.service.impl.AccountServiceImpl&quot;</span>&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
-
-<p> 就是bean标签里面只配置了class 和id spring在创建该对象时  该对象必须具备无参构造方法 </p>
-<p>第二种方式： 使用普通工厂中的方法创建对象（使用某个类中的方法创建对象，并存入spring容器）</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=<span class="string">&quot;instanceFactory&quot;</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;com.learning.factory.InstanceFactory&quot;</span>&gt;&lt;/bean&gt;</span><br><span class="line">&lt;bean id=<span class="string">&quot;accountService&quot;</span>  factory-bean=<span class="string">&quot;instanceFactory&quot;</span> </span><br><span class="line">    factory-method=<span class="string">&quot;getAccountService&quot;</span>&gt;&lt;/bean&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="常用标签的使用"><a href="#常用标签的使用" class="headerlink" title="常用标签的使用"></a>常用标签的使用</h1><ol>
+<li><h2 id="mapper-配置文件标签的使用"><a href="#mapper-配置文件标签的使用" class="headerlink" title="mapper 配置文件标签的使用"></a>mapper 配置文件标签的使用</h2></li>
+</ol>
+<h3 id="1-where"><a href="#1-where" class="headerlink" title="1.where"></a>1.where</h3><p>   sql语句自动给你添加where</p>
+<h3 id="2-if-test-”条件”"><a href="#2-if-test-”条件”" class="headerlink" title="2. if  test=”条件”"></a>2. if  test=”条件”</h3><p>  条件满足执行if标签里面的语句 </p>
+<h3 id="3-foreach-collection-”遍历对象”-open-”-开始”-close-”结束”-item-”遍历名”-separator-”-分割符”"><a href="#3-foreach-collection-”遍历对象”-open-”-开始”-close-”结束”-item-”遍历名”-separator-”-分割符”" class="headerlink" title="3.foreach collection=”遍历对象” open=” 开始” close=”结束”  item=”遍历名” separator=” 分割符”"></a>3.foreach collection=”遍历对象” open=” 开始” close=”结束”  item=”遍历名” separator=” 分割符”</h3><p>一般用于子查询 </p>
+<p><foreach collection="遍历对象" open=" 开始" close="结束" item="遍历名" separator=" 分割符"> #{遍历名”} &lt;/<foreach></foreach></foreach></p>
+<h3 id="4-resultMap"><a href="#4-resultMap" class="headerlink" title="4. resultMap"></a>4. resultMap</h3><h4 id="1-多对多配置映射关系"><a href="#1-多对多配置映射关系" class="headerlink" title="1.多对多配置映射关系"></a>1.多对多配置映射关系</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">resultMap</span>  <span class="attr">id</span> =<span class="string">&quot;stu_role&quot;</span>  <span class="attr">type</span> =<span class="string">&quot;student&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>    <span class="attr">property</span> =<span class="string">&quot;stuNo&quot;</span>     <span class="attr">column</span> =<span class="string">&quot;stuNo&quot;</span>   &gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span>   <span class="attr">property</span> =<span class="string">&quot;stuName&quot;</span>  <span class="attr">column</span> =<span class="string">&quot;stuName&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span>   <span class="attr">property</span> =<span class="string">&quot;stuAge&quot;</span>    <span class="attr">column</span> =<span class="string">&quot;stuAge&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span>   <span class="attr">property</span> =<span class="string">&quot;stuPhone&quot;</span>   <span class="attr">column</span> =<span class="string">&quot;stuPhone&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span>   <span class="attr">property</span> =<span class="string">&quot;stuSex&quot;</span>   <span class="attr">column</span> =<span class="string">&quot;stuSex&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--配置多对多关系映射--&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">collection</span>  <span class="attr">property</span> =<span class="string">&quot;roleList&quot;</span>  <span class="attr">ofType</span> =<span class="string">&quot;role&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>    <span class="attr">property</span> =<span class="string">&quot;roleId&quot;</span>   <span class="attr">column</span> =<span class="string">&quot;roleId&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span>   <span class="attr">property</span> =<span class="string">&quot;roleName&quot;</span> <span class="attr">column</span> =<span class="string">&quot;roleName&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span>    <span class="attr">property</span> =<span class="string">&quot;roleDesc&quot;</span> <span class="attr">column</span> =<span class="string">&quot;roleDesc&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 
-<p>就相当于 你导入一个jar包 那个jar包中的对象是通过工厂创建出来的 你可以第二种式 拿到对象并交个spring管理 </p>
-<p><em>&lt;!– 第三种方式：使用工厂中的静态方法创建对象（使用某个类中的静态方法创建对象，并存入spring容器)</em></p>
-<p>   <em><bean id="accountService" class="com.learning.factory.StaticFactory" factory-method="getAccountService"></bean></em></p>
-<p>   <em>–&gt;</em></p>
-<h3 id="2-配置bean的作用范围"><a href="#2-配置bean的作用范围" class="headerlink" title="2.配置bean的作用范围"></a><strong>2.配置bean的作用范围</strong></h3><p><em>bean的作用范围调整</em></p>
-<p>​    <em>bean标签的scope属性：</em></p>
-<p>​        <em>作用：用于指定bean的作用范围</em></p>
-<p>​        <em>取值： 常用的就是单例的和多例的</em></p>
-<p>​            <em>singleton：单例的（默认值）</em></p>
-<p>​            <em>prototype：多例的</em></p>
-<p>​            <em>request：作用于web应用的请求范围</em></p>
-<p>​            <em>session：作用于web应用的会话范围</em></p>
-<p>​            <em>global-session：作用于集群环境的会话范围（全局会话范围），当不是集群环境时，它就是session</em></p>
-<h3 id="3-bean的生命周期"><a href="#3-bean的生命周期" class="headerlink" title="3.bean的生命周期"></a><strong>3.bean的生命周期</strong></h3><p><em>bean对象的生命周期</em></p>
-<p>​        <em>单例对象</em></p>
-<p>​            <em>出生：当容器创建时对象出生</em></p>
-<p>​            <em>活着：只要容器还在，对象一直活着</em></p>
-<p>​            <em>死亡：容器销毁，对象消亡</em></p>
-<p>​            <em>总结：单例对象的生命周期和容器相同</em></p>
-<p>​        <em>多例对象</em></p>
-<p>​            <em>出生：当我们使用对象时spring框架为我们创建</em></p>
-<p>​            <em>活着：对象只要是在使用过程中就一直活着。</em></p>
-<p>​            <em>死亡: 对象死亡 取决于垃圾回收机制</em></p>
-<h3 id="4-基于注解创建bean的方法"><a href="#4-基于注解创建bean的方法" class="headerlink" title="4.基于注解创建bean的方法"></a><strong>4.基于注解创建bean的方法</strong></h3><p>注入类对象</p>
-<p>*      Component:</p>
-<p>**          作用：用于把当前类对象存入spring容器中*</p>
-<p>**          属性：*</p>
-<p>**              value：用于指定bean的id。当我们不写时，它的默认值是当前类名，且首字母改小写。*</p>
-<p>**      Controller：一般用在表现层*</p>
-<p>**      Service：一般用在业务层*</p>
-<p>**      Repository：一般用在持久层*</p>
-<p>**      以上三个注解他们的作用和属性与Component是一模一样。*</p>
-<p>**      他们三个是spring框架为我们提供明确的三层使用的注解，使我们的三层对象更加清晰*</p>
-<p>-——–</p>
-<p>** 用于注入数据的*</p>
-<p>**      他们的作用就和在xml配置文件中的bean标签中写一个**<property>*<em>标签的作用是一样的</em></property></p>
-<p>**      @Autowired:* </p>
-<p>**          作用：自动按照类型注入。只要容器中有唯一的一个bean对象类型和要注入的变量类型匹配，就可以注入成功*</p>
-<p>**                如果ioc容器中没有任何bean的类型和要注入的变量类型匹配，则报错。*</p>
-<p>**                如果Ioc容器中有多个类型匹配时：*</p>
-<p>**          出现位置：*</p>
-<p>**              可以是变量上，也可以是方法上*</p>
-<p>**          细节：*</p>
-<p>**              在使用注解注入时，set方法就不是必须的了。*</p>
-<p>**      @Qualifier:  用来处理一个接口有多个实现类 结合@Autowirte一起使用*</p>
-<p>**          作用：在按照类中注入的基础之上再按照名称注入。它在给类成员注入时不能单独使用。但是在给方法参数注入时可以* </p>
-<p>**          属性：*</p>
-<p>**              value：用于指定注入bean的id。*</p>
-<p>**      @Resource*</p>
-<p>**          作用：直接按照bean的id注入。它可以独立使用*</p>
-<p>**          属性：*</p>
-<p>**              name：用于指定bean的id。*</p>
-<p>**      以上三个注入都只能注入其他bean类型的数据，而基本类型和String类型无法使用上述注解实现。*</p>
-<p>**      另外，集合类型的注入只能通过XML来实现。*</p>
-<hr>
-<p>**      @Value*</p>
-<p>**          作用：用于注入基本类型和String类型的数据*</p>
-<p>**          属性：*</p>
-<p>**              value：用于指定数据的值。它可以使用spring中SpEL(也就是spring的el表达式）*</p>
-<p>**                      SpEL的写法：${表达式}*</p>
-<p><em>————————–</em></p>
-<p>** 用于改变作用范围的*</p>
-<p>**      他们的作用就和在bean标签中使用scope属性实现的功能是一样的*</p>
-<p>**      Scope*</p>
-<p>**          作用：用于指定bean的作用范围*</p>
-<p>**          属性：*</p>
-<p>**              value：指定范围的取值。常用取值：singleton prototype*</p>
-<hr>
-<ul>
-<li>和生命周期相关 了解*</li>
-</ul>
-<p>**      他们的作用就和在bean标签中使用init-method和destroy-methode的作用是一样的*</p>
-<ul>
-<li><pre><code> PreDestroy*
-</code></pre>
+<h4 id="2-一对一配置映射关系"><a href="#2-一对一配置映射关系" class="headerlink" title="2.一对一配置映射关系"></a>2.一对一配置映射关系</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">&lt;!-- 定义封装 student  和  project 的resultMap --&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span>       <span class="attr">id</span> =<span class="string">&quot;project_student_map&quot;</span>       <span class="attr">type</span> =<span class="string">&quot;project&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>       <span class="attr">property</span> =<span class="string">&quot;id&quot;</span>       <span class="attr">column</span> =<span class="string">&quot;projectId&quot;</span>   &gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span>       <span class="attr">property</span> =<span class="string">&quot;money&quot;</span>       <span class="attr">column</span> =<span class="string">&quot;money&quot;</span>   &gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span>       <span class="attr">property</span> =<span class="string">&quot;stuNo&quot;</span>       <span class="attr">column</span> =<span class="string">&quot;stuNo&quot;</span>   &gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span>       <span class="attr">property</span> =<span class="string">&quot;stuProject&quot;</span>       <span class="attr">column</span> =<span class="string">&quot;stuProject&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">result</span>       <span class="attr">property</span> =<span class="string">&quot;stuProject&quot;</span>       <span class="attr">column</span> =<span class="string">&quot;stuProject&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 一对一 封装student--&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">association</span>       <span class="attr">property</span> =<span class="string">&quot;student&quot;</span>       <span class="attr">column</span> =<span class="string">&quot;stuNo&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span>       <span class="attr">column</span> =<span class="string">&quot;id&quot;</span>       <span class="attr">property</span> =<span class="string">&quot;id&quot;</span>   &gt;</span><span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span>       <span class="attr">property</span> =<span class="string">&quot;stuName&quot;</span>       <span class="attr">column</span> =<span class="string">&quot;stuName&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span>       <span class="attr">property</span> =<span class="string">&quot;stuAge&quot;</span>       <span class="attr">column</span> =<span class="string">&quot;stuAge&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span>       <span class="attr">property</span> =<span class="string">&quot;stuPhone&quot;</span>       <span class="attr">column</span> =<span class="string">&quot;stuPhone&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span>       <span class="attr">property</span> =<span class="string">&quot;stuSex&quot;</span>       <span class="attr">column</span> =<span class="string">&quot;stuSex&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">    &lt;/association   &gt;</span><br><span class="line">&lt;/resultMap   &gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-主配置文件标签的使用"><a href="#2-主配置文件标签的使用" class="headerlink" title="2.主配置文件标签的使用"></a>2.主配置文件标签的使用</h2><h3 id="1-properties"><a href="#1-properties" class="headerlink" title="1.properties"></a>1.properties</h3><!--
+
+​    resource 必须在类路径下 配置名    
+
+​    url 写路径  文件所在的全路径    
+
+​    -->    
+
+<p>&lt;   properties       resource =”jdbcConfig.properties”   &gt;</p>
+<p>用于绑定外部数据源配置</p>
+<h3 id="2-typeAliases"><a href="#2-typeAliases" class="headerlink" title="2.typeAliases"></a>2.typeAliases</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!--配置全限定类名的别名  必须放在environments前面 --&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">typeAliases</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- type 全限定类名  alias 别名--&gt;</span>    </span><br><span class="line">        <span class="comment">&lt;!--&lt;typeAlias type=&quot;com.mybatis.pojo.Student&quot; alias=&quot;student&quot;&gt;&lt;/typeAlias&gt;--&gt;</span>   </span><br><span class="line">        <span class="comment">&lt;!--用于配置别名的包    当指定后包下的实体类会指定别名 类名就是别名  不区分大小写--&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">package</span>       <span class="attr">name</span> =<span class="string">&quot;com.mybatis.pojo&quot;</span>    &gt;</span><span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">typeAliases</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>配置完这个 mapper配置文件中用到权限定类名都可以用别名 如 parametetype</p>
+<ol>
+<li><h3 id><a href="#" class="headerlink" title></a><mapper></mapper></h3></li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    </span></span><br><span class="line"><span class="comment">         &lt;mapper resource=&quot;com/mybatis/mapper/StudentMapper.xml&quot;&gt;&lt;/mapper&gt;    </span></span><br><span class="line"><span class="comment">         &lt;mapper class=&quot;com.mybatis.mapper.StudentMapper&quot;&gt;&lt;/mapper&gt;    </span></span><br><span class="line"><span class="comment">        --&gt;</span>    </span><br><span class="line">        <span class="comment">&lt;!--package 用于指定dao接口的包--&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">package</span>       <span class="attr">name</span> =<span class="string">&quot;com.mybatis.mapper&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span>	</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="立即加载和延迟加载"><a href="#立即加载和延迟加载" class="headerlink" title="立即加载和延迟加载"></a>立即加载和延迟加载</h1><ol>
+<li><h2 id="立即加载"><a href="#立即加载" class="headerlink" title="立即加载"></a>立即加载</h2><p>不管用不用，只要一调用方法就立即查询</p>
 </li>
-</ul>
-<p>**          作用：用于指定销毁方法*</p>
-<p>**      PostConstruct*</p>
-<p>**          作用：用于指定初始化方法*</p>
+<li><h2 id="延迟加载"><a href="#延迟加载" class="headerlink" title="延迟加载"></a>延迟加载</h2></li>
+</ol>
+<p>在真正使用数据时才发起查询，不用的时候不查询，按需加载（懒加载）</p>
+<ol>
+<li><h3 id="一对一配置延迟加载"><a href="#一对一配置延迟加载" class="headerlink" title="一对一配置延迟加载"></a>一对一配置延迟加载</h3></li>
+</ol>
+<p>​                 <img src="https://qqadapt.qpic.cn/txdocpic/0/1ed5774f87b6890e659d22da408145b6/0?w=1262&h=521" alt="img">        </p>
+<p>​    配置延迟加载     column select查询出来的列    </p>
+<p>​     </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">association</span>   <span class="attr">property</span>= <span class="string">&quot;student&quot;</span>     <span class="attr">javaType</span>= <span class="string">&quot;Student&quot;</span>      <span class="attr">column</span>= <span class="string">&quot;stuNo&quot;</span> </span></span><br><span class="line"><span class="tag">        <span class="attr">select</span>= <span class="string">&quot;com.mybatis.mapper.StudentMapper.findStudentById&quot;</span>  </span></span><br><span class="line"><span class="tag">&lt;/<span class="attr">association</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>可以理解为 查询所有的 同时按id查询  如何没有循环取值就是查询所有 没有加载按id查询</p>
+<p>按id查询就延迟加载的sql</p>
+<ol>
+<li><h3 id="多对多配置延迟加载"><a href="#多对多配置延迟加载" class="headerlink" title="多对多配置延迟加载"></a>多对多配置延迟加载</h3></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span>    <span class="title">Student</span>     <span class="keyword">implements</span>    <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">       <span class="keyword">private</span>     Integer    stuNo   ;</span><br><span class="line">       <span class="keyword">private</span>     String     stuName   ;</span><br><span class="line">       <span class="keyword">private</span>     Integer       stuAge   ;</span><br><span class="line">       <span class="keyword">private</span>     String    stuPhone   ;</span><br><span class="line">       <span class="keyword">private</span>  <span class="keyword">char</span>        stuSex   ;</span><br><span class="line">        <span class="comment">// 配置多对多关系映射    </span></span><br><span class="line">       List&lt;Role&gt;    roleList   ;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!-- 配置多对多延迟加载 --&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">collection</span>     <span class="attr">property</span>= <span class="string">&quot;roleList&quot;</span>      <span class="attr">ofType</span>= <span class="string">&quot;role&quot;</span>      <span class="attr">column</span>= <span class="string">&quot;stuNo&quot;</span>   </span></span><br><span class="line"><span class="tag">   <span class="attr">select</span>= <span class="string">&quot;com.mybatis.mapper.StudentMapper.findProjectByStuNo&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 多对多延迟加载 --&gt;</span>    </span><br><span class="line"><span class="tag">&lt;<span class="name">select</span>     <span class="attr">id</span>= <span class="string">&quot;findMany_ManyLazyLoading&quot;</span>       <span class="attr">resultMap</span>= <span class="string">&quot;stu_role&quot;</span>   &gt;</span></span><br><span class="line">    SELECT   </span><br><span class="line">    FROM stu</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span>       <span class="attr">id</span>= <span class="string">&quot;findProjectByStuNo&quot;</span>       <span class="attr">resultType</span>= <span class="string">&quot;role&quot;</span>   &gt;</span></span><br><span class="line">    SELECT r.*  </span><br><span class="line">    FROM stu_role AS sr</span><br><span class="line">             INNER JOIN role AS r ON sr.roleId = r.roleId</span><br><span class="line">    WHERE stuNo = #&#123;stuNo&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个可以理解 没有循环去映射的值 role  就是执行查询所有 </p>
+<p>有取role值就是 执行延迟查询 去根据stuno 去两表查 查中间表和role表 </p>
+<p>拿stuno去查询role  </p>
+<ol>
+<li><h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2></li>
+</ol>
+<p>一对多，多对多 通常情况用懒加载</p>
+<p>多对一（mybatis没有多对一的概念），一对一  通常情况用立即加载</p>
+<h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><ol>
+<li><h2 id="一级缓存"><a href="#一级缓存" class="headerlink" title="一级缓存"></a>一级缓存</h2></li>
+</ol>
+<p>系统自带 不需要配置 在</p>
+<ol>
+<li><h2 id="二级缓存"><a href="#二级缓存" class="headerlink" title="二级缓存"></a>二级缓存</h2></li>
+<li><p>在主配置文件配置开启缓存</p>
+</li>
+</ol>
+<p>​    <!-- 配置缓存-->    </p>
+<p>&lt; setting       name= “cacheEnabled”       value= “true”    /&gt;</p>
+<ol>
+<li>在sql配置文件中配置<cache>标签</cache></li>
+<li>在用到二级缓存的<select>标签中配置 usercache=true 属性</select></li>
+</ol>
+<h1 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h1><h2 id="1-sql分页"><a href="#1-sql分页" class="headerlink" title="1.sql分页"></a>1.sql分页</h2><p>  直接在sql语句上加limit 参数是个map</p>
+<h2 id="2-结果集分页"><a href="#2-结果集分页" class="headerlink" title="2. 结果集分页"></a>2. 结果集分页</h2><p>   在哪个结果集list(?)   根据下标分页 </p>
+<h2 id="-1"><a href="#-1" class="headerlink" title></a></h2>
       
 
       
@@ -355,6 +309,11 @@
                   <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
                     
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/blogImg/Collectioncode.png">
+                      <span class="reward-type">微信</span>
+                    </div>
                     
                   </div>
                 </span>
@@ -373,7 +332,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">mybatis</a>
         		</li>
       		
 		</ul>
@@ -429,7 +388,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://helangqaq.github.io/2021/05/13/spring%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://helangqaq.github.io/2020/07/19/mybatis%E5%9F%BA%E7%A1%80/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -442,6 +401,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/08/13/spring%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          spring基础
+        
+      </div>
+    </a>
   
   
     <a href="/2020/06/12/Math%E7%B1%BB%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
@@ -464,6 +432,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Mybatis"><span class="toc-number">1.</span> <span class="toc-text">Mybatis</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IDEA%E7%89%88"><span class="toc-number">2.1.</span> <span class="toc-text">IDEA版</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">2.1.1.</span> <span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#eclipse%E7%89%88"><span class="toc-number">2.2.</span> <span class="toc-text">eclipse版</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8main%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0%E5%85%A5%E9%97%A8"><span class="toc-number">3.</span> <span class="toc-text">使用main方法实现入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">3.1.</span> <span class="toc-text">执行流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">3.1.1.</span> <span class="toc-text">1.读取配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%88%9B%E5%BB%BASqlSessionFactory%E5%B7%A5%E5%8E%82-%E6%9E%84%E5%BB%BA%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.2.</span> <span class="toc-text">2.创建SqlSessionFactory工厂   构建者模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%8E%82%E7%94%9F%E4%BA%A7SqlSession%E5%AF%B9%E8%B1%A1-%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.使用工厂生产SqlSession对象   工厂模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E4%BD%BF%E7%94%A8SqlSession%E5%88%9B%E5%BB%BADao%E6%8E%A5%E5%8F%A3%E7%9A%84%E4%BB%A3%E7%90%86%E5%AF%B9%E8%B1%A1-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.1.4.</span> <span class="toc-text">4.使用SqlSession创建Dao接口的代理对象 动态代理模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E5%AF%B9%E8%B1%A1%E6%89%A7%E8%A1%8C%E6%96%B9%E6%B3%95"><span class="toc-number">3.1.5.</span> <span class="toc-text">5.使用代理对象执行方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E9%87%8A%E6%94%BE%E8%B5%84%E6%BA%90"><span class="toc-number">3.1.6.</span> <span class="toc-text">6.释放资源</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A5%E9%97%A8%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B%E8%A7%A3%E6%9E%90%E5%9B%BE"><span class="toc-number">4.</span> <span class="toc-text">入门执行流程解析图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9E%84%E5%BB%BA%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.</span> <span class="toc-text">           构建者模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%9E%84%E5%BB%BA%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">5.1.</span> <span class="toc-text">1.什么是构建者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">5.2.</span> <span class="toc-text">2. 使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%88%86%E6%9E%90%E6%9E%84%E5%BB%BA%E8%80%85%E9%87%8C%E9%9D%A2%E7%9A%84%E8%A7%92%E8%89%B2%EF%BC%9A"><span class="toc-number">5.3.</span> <span class="toc-text">3.分析构建者里面的角色：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mybatis%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">6.</span> <span class="toc-text">mybatis执行流程                                             </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">7.</span> <span class="toc-text">常用标签的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#mapper-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%87%E7%AD%BE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">7.1.</span> <span class="toc-text">mapper 配置文件标签的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-where"><span class="toc-number">7.1.1.</span> <span class="toc-text">1.where</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-if-test-%E2%80%9D%E6%9D%A1%E4%BB%B6%E2%80%9D"><span class="toc-number">7.1.2.</span> <span class="toc-text">2. if  test&#x3D;”条件”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-foreach-collection-%E2%80%9D%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E2%80%9D-open-%E2%80%9D-%E5%BC%80%E5%A7%8B%E2%80%9D-close-%E2%80%9D%E7%BB%93%E6%9D%9F%E2%80%9D-item-%E2%80%9D%E9%81%8D%E5%8E%86%E5%90%8D%E2%80%9D-separator-%E2%80%9D-%E5%88%86%E5%89%B2%E7%AC%A6%E2%80%9D"><span class="toc-number">7.1.3.</span> <span class="toc-text">3.foreach collection&#x3D;”遍历对象” open&#x3D;” 开始” close&#x3D;”结束”  item&#x3D;”遍历名” separator&#x3D;” 分割符”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-resultMap"><span class="toc-number">7.1.4.</span> <span class="toc-text">4. resultMap</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%A4%9A%E5%AF%B9%E5%A4%9A%E9%85%8D%E7%BD%AE%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB"><span class="toc-number">7.1.4.1.</span> <span class="toc-text">1.多对多配置映射关系</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%B8%80%E5%AF%B9%E4%B8%80%E9%85%8D%E7%BD%AE%E6%98%A0%E5%B0%84%E5%85%B3%E7%B3%BB"><span class="toc-number">7.1.4.2.</span> <span class="toc-text">2.一对一配置映射关系</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%BB%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%A0%87%E7%AD%BE%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">7.2.</span> <span class="toc-text">2.主配置文件标签的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-properties"><span class="toc-number">7.2.1.</span> <span class="toc-text">1.properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-typeAliases"><span class="toc-number">7.2.2.</span> <span class="toc-text">2.typeAliases</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">7.2.3.</span> <span class="toc-text"></span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E5%8A%A0%E8%BD%BD%E5%92%8C%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD"><span class="toc-number">8.</span> <span class="toc-text">立即加载和延迟加载</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AB%8B%E5%8D%B3%E5%8A%A0%E8%BD%BD"><span class="toc-number">8.1.</span> <span class="toc-text">立即加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD"><span class="toc-number">8.2.</span> <span class="toc-text">延迟加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%AF%B9%E4%B8%80%E9%85%8D%E7%BD%AE%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD"><span class="toc-number">8.2.1.</span> <span class="toc-text">一对一配置延迟加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E5%AF%B9%E5%A4%9A%E9%85%8D%E7%BD%AE%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD"><span class="toc-number">8.2.2.</span> <span class="toc-text">多对多配置延迟加载</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">8.3.</span> <span class="toc-text">使用场景</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BC%93%E5%AD%98"><span class="toc-number">9.</span> <span class="toc-text">缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="toc-number">9.1.</span> <span class="toc-text">一级缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E7%BC%93%E5%AD%98"><span class="toc-number">9.2.</span> <span class="toc-text">二级缓存</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E9%A1%B5"><span class="toc-number">10.</span> <span class="toc-text">分页</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-sql%E5%88%86%E9%A1%B5"><span class="toc-number">10.1.</span> <span class="toc-text">1.sql分页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BB%93%E6%9E%9C%E9%9B%86%E5%88%86%E9%A1%B5"><span class="toc-number">10.2.</span> <span class="toc-text">2. 结果集分页</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-1"><span class="toc-number">10.3.</span> <span class="toc-text"></span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -488,7 +469,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 ����
+    		&copy; 2021 何朗
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -580,6 +561,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jdk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">mybatis</a>
               </li>
              
               <li class="article-tag-list-item">
